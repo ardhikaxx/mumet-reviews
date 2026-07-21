@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { User, onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase";
-import { Loader2, LogOut, Menu, X } from "lucide-react";
+import { Loader2, LogOut, Menu, MessageSquareQuote, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function Navbar() {
@@ -35,14 +35,7 @@ export default function Navbar() {
       <nav className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md shadow-lg shadow-black/5 dark:shadow-black/20 border border-neutral-200/80 dark:border-neutral-800/80 rounded-full px-4 sm:px-6 relative">
         <div className="flex justify-between items-center h-14 sm:h-16">
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex flex-col justify-center">
-              <span className="font-bold text-lg leading-none text-neutral-900 dark:text-white tracking-tight">
-                mumet.in
-              </span>
-              <span className="text-[10px] leading-tight font-medium uppercase tracking-widest text-red-400 mt-0.5">
-                Reviews
-              </span>
-            </div>
+            <MessageSquareQuote className="w-7 h-7 text-red-500" />
           </Link>
 
           {/* Desktop Navigation */}
