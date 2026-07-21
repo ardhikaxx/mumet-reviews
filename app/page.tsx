@@ -68,9 +68,9 @@ export default function Home() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-blue-50 to-white dark:from-neutral-900 dark:to-neutral-950 pt-20 pb-4 px-4">
+      <section className="pt-20 pb-4 px-4 text-white">
         <div className="max-w-4xl mx-auto text-center space-y-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-900/30 text-red-400 text-sm font-medium mb-4 border border-red-900/50">
             <MessageSquareQuote className="w-4 h-4" />
             <span>Cerita Mereka Setelah Menggunakan Jasa Kami</span>
           </div>
@@ -79,17 +79,17 @@ export default function Home() {
           {!loading && testimonials.length > 0 && (
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 pt-8">
               <div className="flex flex-col items-center gap-2">
-                <div className="flex items-center gap-2 text-3xl font-bold text-neutral-900 dark:text-white">
+                <div className="flex items-center gap-2 text-3xl font-bold text-white">
                   <span>{averageRating.toFixed(1)}</span>
-                  <Star className="w-6 h-6 fill-yellow-400 text-yellow-400" />
+                  <Star className="w-6 h-6 fill-yellow-500 text-yellow-500" />
                 </div>
                 <span className="text-sm text-neutral-500">Rata-rata Rating</span>
               </div>
               <div className="hidden sm:block w-px h-12 bg-neutral-200 dark:bg-neutral-800"></div>
               <div className="flex flex-col items-center gap-2">
-                <div className="flex items-center gap-2 text-3xl font-bold text-neutral-900 dark:text-white">
+                <div className="flex items-center gap-2 text-3xl font-bold text-white">
                   <span>{testimonials.length}</span>
-                  <Users className="w-6 h-6 text-blue-600" />
+                  <Users className="w-6 h-6 text-red-500" />
                 </div>
                 <span className="text-sm text-neutral-500">Total Client</span>
               </div>
@@ -132,10 +132,10 @@ export default function Home() {
             </button>
           </div>
         ) : testimonials.length === 0 ? (
-          <div className="text-center py-20 bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-100 dark:border-neutral-800 max-w-2xl mx-auto">
-            <MessageSquareQuote className="w-16 h-16 mx-auto text-neutral-300 dark:text-neutral-700 mb-6" />
-            <h3 className="text-xl font-semibold text-neutral-900 dark:text-white mb-2">Belum ada testimoni</h3>
-            <p className="text-neutral-500 mb-6">Jadilah client pertama yang membagikan pengalaman Anda.</p>
+          <div className="text-center py-20 bg-neutral-900/50 rounded-2xl border border-neutral-800 max-w-2xl mx-auto backdrop-blur-sm">
+            <MessageSquareQuote className="w-16 h-16 mx-auto text-neutral-700 mb-6" />
+            <h3 className="text-xl font-semibold text-white mb-2">Belum ada testimoni</h3>
+            <p className="text-neutral-400 mb-6">Jadilah client pertama yang membagikan pengalaman Anda.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -17,8 +17,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className="scroll-smooth">
-      <body className={`${inter.className} bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 antialiased min-h-screen flex flex-col`}>
+    <html lang="id" className="scroll-smooth dark">
+      <body className={`${inter.className} bg-black bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-red-900/40 via-black to-black text-neutral-100 antialiased min-h-screen flex flex-col selection:bg-red-900 selection:text-white`}>
         <Navbar />
         <main className="flex-grow">
           {children}
