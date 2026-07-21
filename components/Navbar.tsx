@@ -38,9 +38,14 @@ export default function Navbar() {
             <div className="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center text-white font-bold text-xl">
               M
             </div>
-            <span className="font-bold text-xl text-neutral-900 dark:text-white tracking-tight">
-              mumet.in <span className="font-light text-neutral-400">reviews</span>
-            </span>
+            <div className="flex flex-col justify-center">
+              <span className="font-bold text-lg leading-none text-neutral-900 dark:text-white tracking-tight">
+                mumet.in
+              </span>
+              <span className="text-[10px] leading-tight font-medium uppercase tracking-widest text-red-400 mt-0.5">
+                Reviews
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
