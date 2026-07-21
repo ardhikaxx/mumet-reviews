@@ -21,36 +21,35 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
     : "Baru saja";
 
   return (
-    <div className="bg-[#F3F4F6] dark:bg-neutral-800 rounded-3xl pt-8 px-8 flex flex-col h-full relative overflow-hidden">
-      <div className="flex-grow pb-10">
-        <span className="text-7xl text-neutral-300 dark:text-neutral-600 font-serif leading-none block h-10 mb-2">
-          &ldquo;
-        </span>
-        <p className="text-[17px] font-medium text-neutral-900 dark:text-neutral-100 leading-snug">
+    <div className="bg-[#1C1C1F] dark:bg-[#1C1C1F] rounded-2xl p-6 sm:p-7 flex flex-col h-full border border-neutral-800">
+      <div className="mb-4">
+        <RatingStars rating={testimonial.rating} maxRating={5} className="scale-90 origin-left" />
+      </div>
+      
+      <div className="flex-grow mb-6">
+        <p className="text-[#D1D5DB] text-[15px] leading-relaxed">
           {testimonial.message}
         </p>
       </div>
       
-      <div className="flex -mx-8 mt-auto">
-        <div className="bg-white dark:bg-neutral-950 rounded-tr-[2.5rem] py-4 pl-8 pr-8 min-w-[75%] flex items-center gap-3">
-          {testimonial.photoURL ? (
-            <img
-              src={testimonial.photoURL}
-              alt={testimonial.name}
-              className="w-11 h-11 rounded-full object-cover"
-              referrerPolicy="no-referrer"
-            />
-          ) : (
-            <div className="w-11 h-11 rounded-full bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 flex items-center justify-center font-medium text-sm">
-              {testimonial.name.charAt(0).toUpperCase()}
-            </div>
-          )}
-          <div className="flex flex-col">
-            <h3 className="text-sm font-bold text-neutral-900 dark:text-neutral-100">
-              {testimonial.name}
-            </h3>
-            <span className="text-xs text-neutral-500">{formattedDate}</span>
+      <div className="flex items-center gap-3 mt-auto">
+        {testimonial.photoURL ? (
+          <img
+            src={testimonial.photoURL}
+            alt={testimonial.name}
+            className="w-10 h-10 rounded-full object-cover"
+            referrerPolicy="no-referrer"
+          />
+        ) : (
+          <div className="w-10 h-10 rounded-full bg-neutral-800 text-neutral-400 flex items-center justify-center font-medium text-sm">
+            {testimonial.name.charAt(0).toUpperCase()}
           </div>
+        )}
+        <div className="flex flex-col">
+          <h3 className="text-sm font-bold text-white">
+            {testimonial.name}
+          </h3>
+          <span className="text-[13px] text-[#9CA3AF] mt-0.5">{formattedDate}</span>
         </div>
       </div>
     </div>
