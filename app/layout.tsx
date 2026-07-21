@@ -23,9 +23,7 @@ export default function RootLayout({
         <main className="flex-grow">
           {children}
         </main>
-        <footer className="py-8 text-center text-sm text-neutral-500 dark:text-neutral-400 mt-12 border-t border-neutral-200 dark:border-neutral-800">
-          <p>&copy; {new Date().getFullYear()} Testimoni MUMET.IN. All rights reserved.</p>
-        </footer>
+
         <Toaster position="bottom-center" />
       </body>
     </html>
