@@ -9,6 +9,7 @@ import TestimonialForm from "@/components/TestimonialForm";
 import Link from "next/link";
 import { Star, Users, MessageSquareQuote, Loader2 } from "lucide-react";
 import RatingStars from "@/components/RatingStars";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   const [user, setUser] = useState<User | null>(null);
@@ -67,8 +68,9 @@ export default function Home() {
 
   return (
     <div className="w-full">
+      <Navbar />
       {/* Hero Section */}
-      <section className="pt-20 pb-4 px-4 text-white">
+      <section className="pt-8 pb-4 px-4 text-white">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-900/30 text-red-400 text-sm font-medium mb-4 border border-red-900/50">
             <MessageSquareQuote className="w-4 h-4" />
