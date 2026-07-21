@@ -20,6 +20,10 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
     ? formatDistanceToNow(new Date(testimonial.createdAt), { addSuffix: true, locale: id })
     : "Baru saja";
 
+  const maskedName = testimonial.name
+    ? testimonial.name.split(" ").map(word => word.length > 0 ? word[0] + "***" : "").join(" ")
+    : "A***";
+
   return (
     <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-7 flex flex-col h-full shadow-sm shadow-black/20 relative overflow-hidden" style={{ boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.15)' }}>
       {/* Decorative Quote Icon */}
@@ -56,7 +60,7 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
         )}
         <div className="flex flex-col">
           <h3 className="text-sm font-bold text-white">
-            {testimonial.name}
+            {maskedName}
           </h3>
           <span className="text-[13px] text-[#9CA3AF] mt-0.5">{formattedDate}</span>
         </div>
