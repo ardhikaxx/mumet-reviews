@@ -27,9 +27,9 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <div className="sticky top-4 z-50 px-4 sm:px-6 w-full max-w-5xl mx-auto">
+      <nav className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md shadow-lg shadow-black/5 dark:shadow-black/20 border border-neutral-200/80 dark:border-neutral-800/80 rounded-full px-4 sm:px-6 relative">
+        <div className="flex justify-between items-center h-14 sm:h-16">
           <Link href="/" className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-xl">
               T
@@ -98,8 +98,8 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      <div className={cn("md:hidden", isMenuOpen ? "block" : "hidden")}>
-        <div className="px-4 pt-2 pb-4 space-y-1 bg-white dark:bg-neutral-950 border-b border-neutral-200 dark:border-neutral-800">
+      <div className={cn("md:hidden absolute top-[calc(100%+0.5rem)] left-0 right-0 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl shadow-xl overflow-hidden transition-all duration-200", isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none")}>
+        <div className="px-4 pt-4 pb-6 space-y-1">
 
           
           {!loading && user ? (
@@ -144,6 +144,7 @@ export default function Navbar() {
           )}
         </div>
       </div>
-    </nav>
+      </nav>
+    </div>
   );
 }
