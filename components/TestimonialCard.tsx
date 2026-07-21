@@ -21,7 +21,7 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
     : "Baru saja";
 
   return (
-    <div className="bg-gradient-to-br from-white/10 to-transparent backdrop-blur-3xl rounded-2xl p-6 sm:p-7 flex flex-col h-full border border-white/20 shadow-xl shadow-black/40 relative overflow-hidden">
+    <div className="bg-gradient-to-br from-white/10 to-transparent backdrop-blur-3xl rounded-2xl p-6 sm:p-7 flex flex-col h-full shadow-xl shadow-black/40 relative overflow-hidden">
       {/* Decorative Quote Icon */}
       <svg 
         className="absolute top-4 right-4 w-16 h-16 text-white opacity-[0.03] pointer-events-none" 
