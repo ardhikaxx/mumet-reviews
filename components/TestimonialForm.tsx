@@ -56,14 +56,14 @@ export default function TestimonialForm({ user }: TestimonialFormProps) {
   };
 
   return (
-    <div className="bg-white dark:bg-neutral-900 rounded-2xl p-5 md:p-6 shadow-sm border border-neutral-100 dark:border-neutral-800 max-w-lg mx-auto">
-      <h2 className="text-xl font-bold mb-5 text-neutral-900 dark:text-neutral-100 text-center">
+    <div className="bg-white/10 backdrop-blur-md rounded-2xl p-5 md:p-6 shadow-sm shadow-black/20 max-w-lg mx-auto" style={{ boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.15)' }}>
+      <h2 className="text-xl font-bold mb-5 text-white text-center">
         Bagikan Pengalaman Anda
       </h2>
       
       <form onSubmit={handleSubmit} className="space-y-5">
         <div>
-          <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
+          <label className="block text-sm font-medium text-white/70 mb-2 text-center">
             Penilaian Anda
           </label>
           <RatingStars 
@@ -75,7 +75,7 @@ export default function TestimonialForm({ user }: TestimonialFormProps) {
         </div>
         
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
+          <label htmlFor="message" className="block text-sm font-medium text-white/70 mb-2">
             Pesan Testimoni
           </label>
           <textarea
@@ -84,8 +84,8 @@ export default function TestimonialForm({ user }: TestimonialFormProps) {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             disabled={isSubmitting}
-            placeholder="Ceritakan pengalaman Anda menggunakan jasa kami..."
-            className="w-full px-4 py-2 text-sm rounded-xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-950 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none disabled:opacity-50 text-neutral-900 dark:text-neutral-100"
+            placeholder="Ceritakan pengalaman Anda..."
+            className="w-full px-4 py-3 text-sm rounded-xl border border-white/10 bg-black/20 focus:ring-1 focus:ring-white/30 focus:border-white/30 transition-colors resize-none disabled:opacity-50 text-white placeholder:text-white/30 outline-none"
             required
           />
         </div>
@@ -93,7 +93,7 @@ export default function TestimonialForm({ user }: TestimonialFormProps) {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full py-2.5 px-4 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-xl font-medium transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className="w-full py-3 px-4 bg-white/10 hover:bg-white/20 text-white text-sm rounded-xl font-medium transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
         >
           {isSubmitting ? (
             <>
