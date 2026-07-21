@@ -35,9 +35,6 @@ export default function Navbar() {
       <nav className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md shadow-lg shadow-black/5 dark:shadow-black/20 border border-neutral-200/80 dark:border-neutral-800/80 rounded-full px-4 sm:px-6 relative">
         <div className="flex justify-between items-center h-14 sm:h-16">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center text-white font-bold text-xl">
-              M
-            </div>
             <div className="flex flex-col justify-center">
               <span className="font-bold text-lg leading-none text-neutral-900 dark:text-white tracking-tight">
                 mumet.in
