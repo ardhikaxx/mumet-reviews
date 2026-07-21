@@ -82,7 +82,7 @@ export default function TestimonialForm({ user }: TestimonialFormProps) {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full sm:w-auto py-2 px-6 bg-white text-black hover:bg-neutral-200 text-sm rounded-full font-bold transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full sm:w-auto py-2 px-6 bg-red-600 hover:bg-red-700 text-white text-sm rounded-full font-bold transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {isSubmitting ? (
               <Loader2 className="w-4 h-4 animate-spin" />
