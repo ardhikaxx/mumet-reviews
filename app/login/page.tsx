@@ -55,7 +55,7 @@ export default function Login() {
     <div className="min-h-[calc(100vh-140px)] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 bg-white dark:bg-neutral-900 p-8 rounded-3xl shadow-lg border border-neutral-100 dark:border-neutral-800">
         <div className="text-center">
-          <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4">
+          <div className="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4">
             T
           </div>
           <h2 className="text-3xl font-bold text-neutral-900 dark:text-white">Selamat Datang</h2>
@@ -80,7 +80,7 @@ export default function Login() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="block w-full pl-10 pr-3 py-3 border border-neutral-300 dark:border-neutral-700 rounded-xl focus:ring-blue-500 focus:border-blue-500 bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-white"
+                  className="block w-full pl-10 pr-3 py-3 border border-neutral-300 dark:border-neutral-700 rounded-xl focus:ring-red-500 focus:border-red-500 bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-white"
                   placeholder="nama@email.com"
                 />
               </div>
@@ -100,7 +100,7 @@ export default function Login() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="block w-full pl-10 pr-3 py-3 border border-neutral-300 dark:border-neutral-700 rounded-xl focus:ring-blue-500 focus:border-blue-500 bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-white"
+                  className="block w-full pl-10 pr-3 py-3 border border-neutral-300 dark:border-neutral-700 rounded-xl focus:ring-red-500 focus:border-red-500 bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-white"
                   placeholder="••••••••"
                 />
               </div>
@@ -110,7 +110,7 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading || googleLoading}
-            className="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-70 transition-colors"
+            className="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-70 transition-colors"
           >
             {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Masuk"}
           </button>
@@ -130,7 +130,7 @@ export default function Login() {
             <button
               onClick={handleGoogleLogin}
               disabled={loading || googleLoading}
-              className="w-full flex items-center justify-center gap-3 py-3 px-4 border border-neutral-300 dark:border-neutral-700 rounded-xl shadow-sm bg-white dark:bg-neutral-950 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-70 transition-colors"
+              className="w-full flex items-center justify-center gap-3 py-3 px-4 border border-neutral-300 dark:border-neutral-700 rounded-xl shadow-sm bg-white dark:bg-neutral-950 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-70 transition-colors"
             >
               {googleLoading ? (
                 <Loader2 className="w-5 h-5 animate-spin" />
@@ -163,7 +163,7 @@ export default function Login() {
         
         <p className="mt-8 text-center text-sm text-neutral-600 dark:text-neutral-400">
           Belum punya akun?{" "}
-          <Link href="/register" className="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300">
+          <Link href="/register" className="font-medium text-red-600 hover:text-red-500 dark:text-red-400 dark:hover:text-red-300">
             Daftar sekarang
           </Link>
         </p>

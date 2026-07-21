@@ -115,7 +115,7 @@ export default function Home() {
 
         {loading ? (
           <div className="flex flex-col items-center justify-center py-20 space-y-4">
-            <Loader2 className="w-10 h-10 animate-spin text-blue-600" />
+            <Loader2 className="w-10 h-10 animate-spin text-red-600" />
             <p className="text-neutral-500">Memuat testimoni...</p>
           </div>
         ) : error ? (
