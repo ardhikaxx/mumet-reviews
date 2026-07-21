@@ -99,7 +99,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials List */}
-      <section className="max-w-7xl mx-auto px-4 pt-4 pb-16">
+      <section className="max-w-5xl mx-auto px-4 pt-4 pb-16">
         {/* CTA or Form */}
         <div className="mb-12">
           {authLoading ? (
