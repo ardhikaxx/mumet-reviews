@@ -21,10 +21,10 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
     : "Baru saja";
 
   return (
-    <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 sm:p-7 flex flex-col h-full border border-white/10 relative overflow-hidden group hover:-translate-y-1 hover:bg-white/10 hover:shadow-2xl hover:shadow-black/50 hover:border-white/20 transition-all duration-300 cursor-default">
+    <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 sm:p-7 flex flex-col h-full border border-white/10 relative overflow-hidden">
       {/* Decorative Quote Icon */}
       <svg 
-        className="absolute top-4 right-4 w-16 h-16 text-white opacity-[0.03] transform translate-x-2 -translate-y-2 group-hover:scale-110 group-hover:opacity-[0.05] transition-all duration-300 pointer-events-none" 
+        className="absolute top-4 right-4 w-16 h-16 text-white opacity-[0.03] pointer-events-none" 
         viewBox="0 0 24 24" 
         fill="currentColor"
       >
