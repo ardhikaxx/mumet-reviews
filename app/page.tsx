@@ -129,8 +129,8 @@ export default function Home() {
             </button>
           </div>
         ) : testimonials.length === 0 ? (
-          <div className="text-center py-20 bg-neutral-900/50 rounded-2xl border border-neutral-800 max-w-2xl mx-auto backdrop-blur-sm">
-            <MessageSquareQuote className="w-16 h-16 mx-auto text-neutral-700 mb-6" />
+          <div className="text-center py-20 bg-white/10 backdrop-blur-md rounded-2xl max-w-2xl mx-auto shadow-sm shadow-black/20 relative overflow-hidden" style={{ boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.15)' }}>
+            <MessageSquareQuote className="w-16 h-16 mx-auto text-white/40 mb-6" />
             <h3 className="text-xl font-semibold text-white mb-2">Belum ada testimoni</h3>
             <p className="text-neutral-400 mb-6">Jadilah client pertama yang membagikan pengalaman Anda.</p>
           </div>
