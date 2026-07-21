@@ -56,54 +56,41 @@ export default function TestimonialForm({ user }: TestimonialFormProps) {
   };
 
   return (
-    <div className="bg-white/10 backdrop-blur-md rounded-2xl p-5 md:p-6 shadow-sm shadow-black/20 max-w-lg mx-auto" style={{ boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.15)' }}>
-      <h2 className="text-xl font-bold mb-5 text-white text-center">
-        Bagikan Pengalaman Anda
-      </h2>
-      
-      <form onSubmit={handleSubmit} className="space-y-5">
-        <div>
-          <label className="block text-sm font-medium text-white/70 mb-2 text-center">
-            Penilaian Anda
-          </label>
+    <div className="max-w-2xl mx-auto">
+      <form 
+        onSubmit={handleSubmit} 
+        className="bg-white/5 backdrop-blur-md rounded-2xl p-4 sm:p-5 shadow-sm shadow-black/20 border border-white/10 flex flex-col gap-3 transition-all focus-within:bg-white/10 focus-within:border-white/20"
+      >
+        <textarea
+          id="message"
+          rows={3}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          disabled={isSubmitting}
+          placeholder="Bagikan pengalaman Anda menggunakan jasa kami..."
+          className="w-full bg-transparent px-2 py-2 text-sm md:text-base text-white placeholder:text-white/30 resize-none outline-none disabled:opacity-50"
+          required
+        />
+        
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2 border-t border-white/10">
           <RatingStars 
             rating={rating} 
             interactive={true} 
             onRatingChange={setRating} 
-            className="justify-center py-2"
           />
-        </div>
-        
-        <div>
-          <label htmlFor="message" className="block text-sm font-medium text-white/70 mb-2">
-            Pesan Testimoni
-          </label>
-          <textarea
-            id="message"
-            rows={3}
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
+          
+          <button
+            type="submit"
             disabled={isSubmitting}
-            placeholder="Ceritakan pengalaman Anda..."
-            className="w-full px-4 py-3 text-sm rounded-xl border border-white/10 bg-black/20 focus:ring-1 focus:ring-white/30 focus:border-white/30 transition-colors resize-none disabled:opacity-50 text-white placeholder:text-white/30 outline-none"
-            required
-          />
+            className="w-full sm:w-auto py-2 px-6 bg-white text-black hover:bg-neutral-200 text-sm rounded-full font-bold transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          >
+            {isSubmitting ? (
+              <Loader2 className="w-4 h-4 animate-spin" />
+            ) : (
+              "Kirim Ulasan"
+            )}
+          </button>
         </div>
-        
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full py-3 px-4 bg-white/10 hover:bg-white/20 text-white text-sm rounded-xl font-medium transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-        >
-          {isSubmitting ? (
-            <>
-              <Loader2 className="w-5 h-5 animate-spin" />
-              Mengirim...
-            </>
-          ) : (
-            "Kirim Testimoni"
-          )}
-        </button>
       </form>
     </div>
   );
