@@ -106,10 +106,7 @@ export default function Home() {
             <div className="flex justify-center"><Loader2 className="w-8 h-8 animate-spin text-neutral-300" /></div>
           ) : user ? (
             userHasSubmitted ? (
-              <div className="bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 p-4 rounded-xl text-center max-w-lg mx-auto border border-green-200 dark:border-green-900/30 flex items-center justify-center gap-2 shadow-sm">
-                <Star className="w-5 h-5 fill-current" />
-                <span className="font-medium">Anda sudah memberikan ulasan. Terima kasih!</span>
-              </div>
+              null
             ) : (
               <TestimonialForm user={user} />
             )
