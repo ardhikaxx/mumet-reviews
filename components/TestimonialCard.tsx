@@ -40,9 +40,11 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
       </div>
       
       <div className="flex-grow mb-6">
-        <p className="text-[#D1D5DB] text-[15px] leading-relaxed">
-          {testimonial.message}
-        </p>
+        <div className="max-h-32 overflow-y-auto pr-2 custom-scrollbar">
+          <p className="text-[#D1D5DB] text-[15px] leading-relaxed">
+            {testimonial.message}
+          </p>
+        </div>
       </div>
       
       <div className="flex items-center gap-3 mt-auto">
