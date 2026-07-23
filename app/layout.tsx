@@ -6,8 +6,8 @@ import { Toaster } from "react-hot-toast";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Testimoni Client | Layanan Digital Terbaik",
-  description: "Kumpulan testimoni dan ulasan dari client yang telah menggunakan layanan pembuatan website, aplikasi, dan software kami.",
+  title: "Testimoni & Portofolio | Yanuar Ardhika",
+  description: "Kumpulan testimoni dan ulasan dari client yang telah bekerja sama dan menggunakan jasa Yanuar Ardhika.",
 };
 
 export default function RootLayout({
