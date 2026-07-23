@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import RatingStars from "./RatingStars";
 import { Loader2, Sparkles, X } from "lucide-react";
 import { Testimonial } from "./TestimonialCard";
+import { cn } from "@/lib/utils";
 
 interface TestimonialFormProps {
   user: User;
@@ -100,16 +101,25 @@ export default function TestimonialForm({ user, existingTestimonial, onCancelEdi
             <X className="w-5 h-5" />
           </button>
         )}
-        <textarea
-          id="message"
-          rows={3}
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          disabled={isSubmitting}
-          placeholder="Bagikan pengalaman Anda menggunakan jasa kami..."
-          className="w-full bg-transparent px-2 py-2 text-sm md:text-base text-white placeholder:text-white/30 resize-none outline-none disabled:opacity-50"
-          required
-        />
+        <div className="relative">
+          <textarea
+            id="message"
+            rows={3}
+            maxLength={500}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            disabled={isSubmitting}
+            placeholder="Bagikan pengalaman Anda menggunakan jasa kami..."
+            className="w-full bg-transparent px-2 pt-2 pb-6 text-sm md:text-base text-white placeholder:text-white/30 resize-none outline-none disabled:opacity-50"
+            required
+          />
+          <div className={cn(
+            "absolute bottom-1 right-2 text-[11px] font-medium transition-colors",
+            message.length < 10 ? "text-red-400" : "text-white/30"
+          )}>
+            {message.length}/500
+          </div>
+        </div>
         
         <div className="px-2 pb-2">
           <div className="flex items-center gap-1.5 mb-2 text-xs font-medium text-white/50">
