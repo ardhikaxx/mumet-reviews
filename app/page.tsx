@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { onAuthStateChanged, signInWithPopup, User } from "firebase/auth";
-import { ref, onValue, query, orderByChild } from "firebase/database";
+import { ref, onValue, query, orderByChild, remove } from "firebase/database";
 import { auth, database, googleProvider } from "@/lib/firebase";
 import toast from "react-hot-toast";
 import TestimonialCard, { Testimonial } from "@/components/TestimonialCard";
 import TestimonialForm from "@/components/TestimonialForm";
 import Link from "next/link";
-import { Star, Users, MessageSquareQuote, Loader2, CheckCircle } from "lucide-react";
+import { Star, Users, MessageSquareQuote, Loader2, CheckCircle, Trash2, Edit } from "lucide-react";
 import RatingStars from "@/components/RatingStars";
 import Navbar from "@/components/Navbar";
 
@@ -20,6 +20,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -66,7 +67,21 @@ export default function Home() {
     ? testimonials.reduce((acc, curr) => acc + curr.rating, 0) / testimonials.length
     : 0;
 
-  const userHasSubmitted = user && testimonials.some(t => t.userId === user.uid);
+  const userTestimonial = user ? testimonials.find(t => t.userId === user.uid) : null;
+
+  const handleDeleteTestimonial = async () => {
+    if (!userTestimonial) return;
+    if (confirm("Apakah Anda yakin ingin menghapus ulasan ini?")) {
+      try {
+        await remove(ref(database, `testimonials/${userTestimonial.id}`));
+        toast.success("Ulasan berhasil dihapus.");
+        setIsEditing(false);
+      } catch (error) {
+        console.error("Error deleting testimonial:", error);
+        toast.error("Gagal menghapus ulasan.");
+      }
+    }
+  };
 
   const handleGoogleLogin = async () => {
     if (isLoggingIn) return;
@@ -126,11 +141,39 @@ export default function Home() {
           {authLoading ? (
             <div className="flex justify-center"><Loader2 className="w-8 h-8 animate-spin text-neutral-300" /></div>
           ) : user ? (
-            userHasSubmitted ? (
-              <div className="bg-green-500/10 border border-green-500/20 text-green-400 p-4 rounded-xl text-center max-w-2xl mx-auto flex items-center justify-center gap-2">
-                <CheckCircle className="w-5 h-5" />
-                <span>Terima kasih! Anda sudah memberikan ulasan.</span>
-              </div>
+            userTestimonial ? (
+              isEditing ? (
+                <TestimonialForm 
+                  user={user} 
+                  existingTestimonial={userTestimonial}
+                  onCancelEdit={() => setIsEditing(false)} 
+                />
+              ) : (
+                <div className="bg-white/5 border border-white/10 p-6 rounded-2xl max-w-2xl mx-auto flex flex-col gap-4 shadow-lg">
+                  <div className="flex items-center gap-2 text-green-400 font-medium">
+                    <CheckCircle className="w-5 h-5" />
+                    <span>Terima kasih! Ulasan Anda telah diterbitkan.</span>
+                  </div>
+                  <div className="bg-black/20 p-4 rounded-xl border border-white/5">
+                    <RatingStars rating={userTestimonial.rating} maxRating={5} className="mb-2 scale-90 origin-left" />
+                    <p className="text-neutral-300 text-sm leading-relaxed">"{userTestimonial.message}"</p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <button 
+                      onClick={() => setIsEditing(true)}
+                      className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-sm rounded-lg font-medium transition-colors flex items-center gap-2"
+                    >
+                      <Edit className="w-4 h-4" /> Edit Ulasan
+                    </button>
+                    <button 
+                      onClick={handleDeleteTestimonial}
+                      className="px-4 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 hover:text-red-300 text-sm rounded-lg font-medium transition-colors border border-red-500/20 flex items-center gap-2"
+                    >
+                      <Trash2 className="w-4 h-4" /> Hapus
+                    </button>
+                  </div>
+                </div>
+              )
             ) : (
               <TestimonialForm user={user} />
             )
