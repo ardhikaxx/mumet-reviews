@@ -12,7 +12,6 @@ export default function Navbar() {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
 
   useEffect(() => {
@@ -23,8 +22,8 @@ export default function Navbar() {
     return () => unsubscribe();
   }, []);
 
-  const handleLogoutClick = () => {
-    setShowLogoutConfirm(true);
+  const handleLogoutClick = async () => {
+    await signOut(auth);
   };
 
   const handleGoogleLogin = async () => {
@@ -42,11 +41,6 @@ export default function Navbar() {
     } finally {
       setIsLoggingIn(false);
     }
-  };
-
-  const confirmLogout = async () => {
-    setShowLogoutConfirm(false);
-    await signOut(auth);
   };
 
   return (
@@ -192,53 +186,6 @@ export default function Navbar() {
         </div>
       </div>
       </nav>
-
-      {/* Logout Confirmation Modal */}
-      {showLogoutConfirm && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-[#1C1C1F] border border-neutral-800 rounded-2xl w-full max-w-sm overflow-hidden relative shadow-2xl animate-in zoom-in-95 duration-200">
-            {/* Red gradient splash on the left */}
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-red-600/20 to-transparent pointer-events-none" />
-            
-            <button 
-              onClick={() => setShowLogoutConfirm(false)}
-              className="absolute right-3 top-3 p-1.5 text-neutral-500 hover:text-white rounded-lg transition-colors"
-            >
-              <X className="w-4 h-4" />
-            </button>
-            
-            <div className="p-5 flex gap-4">
-              <div className="flex-shrink-0 mt-1">
-                <div className="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center border border-red-500/20">
-                  <LogOut className="w-5 h-5 text-red-500" />
-                </div>
-              </div>
-              <div className="flex-grow pt-1">
-                <h3 className="text-red-400 font-medium text-base mb-1">
-                  Konfirmasi Logout
-                </h3>
-                <p className="text-neutral-400 text-sm leading-relaxed mb-5">
-                  Apakah Anda yakin ingin keluar dari sesi saat ini?
-                </p>
-                <div className="flex gap-2 justify-end">
-                  <button 
-                    onClick={() => setShowLogoutConfirm(false)}
-                    className="px-4 py-2 text-sm font-medium text-neutral-300 hover:text-white transition-colors"
-                  >
-                    Batal
-                  </button>
-                  <button 
-                    onClick={confirmLogout}
-                    className="px-4 py-2 text-sm font-medium bg-red-600/10 text-red-500 hover:bg-red-600 hover:text-white rounded-lg transition-colors border border-red-600/20"
-                  >
-                    Ya, Keluar
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
