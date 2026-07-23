@@ -53,9 +53,23 @@ export default function Navbar() {
     <div className="sticky top-4 z-50 px-4 sm:px-6 w-full max-w-5xl mx-auto">
       <nav className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md shadow-lg shadow-black/5 dark:shadow-black/20 border border-neutral-200/80 dark:border-neutral-800/80 rounded-full px-4 sm:px-6 relative">
         <div className="flex justify-between items-center h-14 sm:h-16">
-          <Link href="/" className="flex items-center gap-2">
-            <MessageSquareQuote className="w-7 h-7 text-red-500" />
-          </Link>
+          <div className="flex items-center gap-6">
+            <Link href="/" className="flex items-center gap-2">
+              <MessageSquareQuote className="w-7 h-7 text-red-500" />
+            </Link>
+            
+            {/* Desktop Left Nav */}
+            <div className="hidden sm:flex items-center">
+              <a 
+                href="https://yanuar-ardhika.vercel.app/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-red-600 dark:hover:text-red-400 transition-colors"
+              >
+                Portofolio
+              </a>
+            </div>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
@@ -122,7 +136,15 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <div className={cn("md:hidden absolute top-[calc(100%+0.5rem)] left-0 right-0 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl shadow-xl overflow-hidden transition-all duration-200", isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none")}>
         <div className="px-4 pt-4 pb-6 space-y-1">
-
+          <a 
+            href="https://yanuar-ardhika.vercel.app/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            onClick={() => setIsMenuOpen(false)}
+            className="block px-3 py-2 rounded-md text-base font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+          >
+            Portofolio
+          </a>
           
           {!loading && user ? (
             <div className="pt-4 pb-3 border-t border-neutral-200 dark:border-neutral-800 mt-4">
