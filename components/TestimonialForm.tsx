@@ -6,16 +6,30 @@ import { ref, push, serverTimestamp } from "firebase/database";
 import { database } from "@/lib/firebase";
 import toast from "react-hot-toast";
 import RatingStars from "./RatingStars";
-import { Loader2 } from "lucide-react";
+import { Loader2, Sparkles } from "lucide-react";
 
 interface TestimonialFormProps {
   user: User;
 }
 
+const SUGGESTIONS = [
+  "Pengerjaan sangat cepat 🚀",
+  "Hasilnya memuaskan ✨",
+  "Sangat profesional 👍",
+  "Harga bersahabat 💰",
+  "Komunikasi responsif 💬",
+];
+
 export default function TestimonialForm({ user }: TestimonialFormProps) {
   const [message, setMessage] = useState("");
   const [rating, setRating] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSuggestionClick = (suggestion: string) => {
+    // Remove emojis for the actual text if desired, or keep them. We'll keep them for fun.
+    if (message.includes(suggestion)) return;
+    setMessage((prev) => prev ? `${prev} ${suggestion}` : suggestion);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -71,6 +85,25 @@ export default function TestimonialForm({ user }: TestimonialFormProps) {
           className="w-full bg-transparent px-2 py-2 text-sm md:text-base text-white placeholder:text-white/30 resize-none outline-none disabled:opacity-50"
           required
         />
+        
+        <div className="px-2 pb-2">
+          <div className="flex items-center gap-1.5 mb-2 text-xs font-medium text-white/50">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Saran Cepat:</span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {SUGGESTIONS.map((suggestion, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => handleSuggestionClick(suggestion)}
+                className="px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs text-neutral-300 hover:text-white transition-colors text-left"
+              >
+                {suggestion}
+              </button>
+            ))}
+          </div>
+        </div>
         
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2 border-t border-white/10">
           <RatingStars 
