@@ -206,9 +206,30 @@ export default function Home() {
         </div>
 
         {loading ? (
-          <div className="flex flex-col items-center justify-center py-20 space-y-4">
-            <Loader2 className="w-10 h-10 animate-spin text-red-600" />
-            <p className="text-neutral-500">Memuat testimoni...</p>
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <div key={i} className="break-inside-avoid">
+                <div className="bg-white/5 animate-pulse rounded-2xl p-6 sm:p-7 flex flex-col h-[220px] shadow-sm shadow-black/20 relative overflow-hidden" style={{ boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.15)' }}>
+                  <div className="flex gap-1 mb-4">
+                    {[1, 2, 3, 4, 5].map(star => (
+                      <div key={star} className="w-4 h-4 bg-white/10 rounded-full" />
+                    ))}
+                  </div>
+                  <div className="flex-grow space-y-3 mb-6">
+                    <div className="h-4 bg-white/10 rounded-md w-full" />
+                    <div className="h-4 bg-white/10 rounded-md w-11/12" />
+                    <div className="h-4 bg-white/10 rounded-md w-4/5" />
+                  </div>
+                  <div className="flex items-center gap-3 mt-auto">
+                    <div className="w-10 h-10 rounded-full bg-white/10" />
+                    <div className="flex flex-col gap-2">
+                      <div className="h-3.5 bg-white/10 rounded w-24" />
+                      <div className="h-2.5 bg-white/10 rounded w-16" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         ) : error ? (
           <div className="bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 p-6 rounded-2xl text-center max-w-2xl mx-auto border border-red-100 dark:border-red-900/30">
