@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { formatDistanceToNow } from "date-fns";
 import { id } from "date-fns/locale";
 import RatingStars from "./RatingStars";
@@ -16,6 +17,8 @@ export interface Testimonial {
 }
 
 export default function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const formattedDate = testimonial.createdAt
     ? formatDistanceToNow(new Date(testimonial.createdAt), { addSuffix: true, locale: id })
     : "Baru saja";
@@ -24,8 +27,14 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
     ? testimonial.name.split(" ").map(word => word.length > 0 ? word[0] + "***" : "").join(" ")
     : "A***";
 
+  const MAX_LENGTH = 150;
+  const shouldTruncate = testimonial.message.length > MAX_LENGTH;
+  const displayMessage = shouldTruncate && !isExpanded 
+    ? testimonial.message.slice(0, MAX_LENGTH).trim() + "..." 
+    : testimonial.message;
+
   return (
-    <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-7 flex flex-col h-full shadow-sm shadow-black/20 relative overflow-hidden" style={{ boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.15)' }}>
+    <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-7 flex flex-col h-full shadow-sm shadow-black/20 relative overflow-hidden transition-all duration-300" style={{ boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.15)' }}>
       {/* Decorative Quote Icon */}
       <svg 
         className="absolute top-4 right-4 w-16 h-16 text-white opacity-[0.03] pointer-events-none" 
@@ -40,11 +49,17 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
       </div>
       
       <div className="flex-grow mb-6">
-        <div className="max-h-32 overflow-y-auto pr-2 custom-scrollbar">
-          <p className="text-[#D1D5DB] text-[15px] leading-relaxed">
-            {testimonial.message}
-          </p>
-        </div>
+        <p className="text-[#D1D5DB] text-[15px] leading-relaxed transition-all duration-300">
+          {displayMessage}
+        </p>
+        {shouldTruncate && (
+          <button 
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="text-red-400 hover:text-red-300 text-[13px] font-medium mt-2 transition-colors focus:outline-none"
+          >
+            {isExpanded ? "Tutup" : "Baca selengkapnya"}
+          </button>
+        )}
       </div>
       
       <div className="flex items-center gap-3 mt-auto">
